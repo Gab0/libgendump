@@ -30,7 +30,9 @@ for Dir in os.listdir(baseDir):
             print('Removing broken book;')
             os.remove(Path+'/'+Book)
             continue
-        R=input("What about {}? [K]EEP or [D]ISCARD? ".format(Book)).lower()
+
+        bookSize = round(os.stat(BookPath).st_size/1000000, 3)
+        R=input("What about {bn}? {sz}mB     [K]EEP or [D]ISCARD? ".format(bn=Book, sz=bookSize)).lower()
         #q.kill()
         if 'd' in R:
             os.remove(Path+'/'+Book)
